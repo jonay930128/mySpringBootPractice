@@ -13,6 +13,19 @@ public class SqlTools {
 
     protected String orderByClause;
 
+    /**
+     * 分页类
+     */
+    protected PageHelper pageHelper;
+
+    public PageHelper getPageHelper() {
+        return pageHelper;
+    }
+
+    public void setPageHelper(PageHelper pageHelper) {
+        this.pageHelper = pageHelper;
+    }
+
     protected String tableName;
 
     public String getTableName() {

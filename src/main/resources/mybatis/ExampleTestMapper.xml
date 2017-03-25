@@ -32,7 +32,38 @@
         </where>
     </sql>
 
+    <!-- 分页起始 -->
+    <sql id="pageHelperSelectStart">
+        <if test="pageHelper != null">
+            <if test="!pageHelper.counter">
+                SELECT * FROM
+                (
+                SELECT A.*, ROWNUM RN
+                FROM (
+            </if>
+            <if test="pageHelper.counter">
+                SELECT COUNT(*) FROM (
+            </if>
+        </if>
+    </sql>
+
+    <!-- 分页终止 -->
+    <sql id="pageHelperSelectEnd">
+        <if test="pageHelper != null">
+            <if test="!pageHelper.counter">
+                ) A
+                WHERE ROWNUM &lt;= #{engine.pageHelper.end,jdbcType=INTEGER}
+                )
+                WHERE RN &gt; #{engine.pageHelper.start,jdbcType=INTEGER}
+            </if>
+            <if test="pageHelper.counter">
+                )
+            </if>
+        </if>
+    </sql>
+
     <select id="selectCustom" parameterType="wrx.xing.domain.SqlTools" resultType="java.util.Map">
+        <include refid="pageHelperSelectStart"></include>
         SELECT
         <if test="distinct" >
             DISTINCT
@@ -52,6 +83,7 @@
         <if test="orderByClause != null" >
             ORDER BY ${orderByClause}
         </if>
+        <include refid="pageHelperSelectEnd"></include>
     </select>
 
 
