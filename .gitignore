@@ -1,0 +1,19 @@
+*.class
+# Package Files #
+*.jar
+*.war
+*.ear
+*.xlsx
+*.json
+Test.*
+
+/*.iws
+/*.ipr
+/*.iml
+/**/*.iml
+/**/target
+/.idea
+MANIFEST.MF
+
+/target
+/server_log
