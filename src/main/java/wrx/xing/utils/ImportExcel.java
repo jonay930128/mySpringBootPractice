@@ -200,10 +200,17 @@ public class ImportExcel {
 					val = cell.getBooleanCellValue();
 				}else if (cell.getCellType() == Cell.CELL_TYPE_ERROR){
 					val = cell.getErrorCellValue();
+				}else if (cell.getCellType() == Cell.CELL_TYPE_BLANK){
+					val = null;
+				}else {
+					val = null;
 				}
 			}
 		}catch (Exception e) {
 			return val;
+		}
+		if ("".equals(val) || "null".equalsIgnoreCase(val.toString())){
+			val = null;
 		}
 		return val;
 	}

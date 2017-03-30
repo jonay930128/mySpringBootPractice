@@ -13,7 +13,7 @@ public class ExampleTestModel {
     @ExcelField(title="公司名称", align=1, sort=1)
     private String companyName;
     @ExcelField(title="公司id", align=1, sort=2)
-    @Length(min=0, max=2, message="公司id不能为空")
+//    @Length(min=0, max=2, message="公司id不能为空")
     private String companyId;
     @ExcelField(title="公司地址", align=1, sort=3)
     private String companyAddress;

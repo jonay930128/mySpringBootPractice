@@ -41,7 +41,11 @@ public class ExcelController {
 //                    logisticsService.saveLogistics(logistics);
                     successNum++;
                 }catch(ConstraintViolationException ex){
-                    ex.printStackTrace();
+//                    ex.printStackTrace();
+                    List<String> messageList = BeanValidators.extractPropertyAndMessageAsList(ex, ": ");
+                    messageList.forEach(
+                            System.out :: println
+                    );
                 }catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -59,13 +63,9 @@ public class ExcelController {
     public void importFileTemplate(HttpServletRequest request,HttpServletResponse response) {
         try {
             String fileName = "Excel测试模板.xlsx";
-//            List<ExampleTestModel> list = Lists.newArrayList();
-//    		list.add(UserUtils.getUser());
-            new ExportExcel("Excel测试模板", ExampleTestModel.class, 2).write(request,response, fileName).dispose();
+            new ExportExcel("", ExampleTestModel.class, 2).write(request,response, fileName).dispose();
         } catch (Exception e) {
             e.printStackTrace();
-//            addMessage(redirectAttributes, "导入模板下载失败！失败信息："+e.getMessage());
         }
-//        return "redirect:" + adminPath + "/sys/user/list?repage";
     }
 }
