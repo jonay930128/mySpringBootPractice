@@ -1,6 +1,7 @@
 package wrx.xing.mapper;
 
 import org.apache.ibatis.annotations.*;
+import wrx.xing.domain.SpringBootTest;
 
 import java.util.List;
 
@@ -27,4 +28,7 @@ public interface SpringBootPracticeMapper {
     })
     @Select("select name,age from springboot_test where name = #{0}")
     List<SpringBootTest> findByName(String name);
+
+    @Delete("delete from springboot_test where id = #{id}")
+    int deleteById(int id);
 }

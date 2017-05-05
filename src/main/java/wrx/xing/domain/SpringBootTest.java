@@ -1,4 +1,4 @@
-package wrx.xing.mapper;
+package wrx.xing.domain;
 
 
 /**

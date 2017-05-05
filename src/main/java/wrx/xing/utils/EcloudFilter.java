@@ -33,7 +33,7 @@ public class EcloudFilter implements Filter {
 
 //    ServletRequest requestWrapper = new RequestWrapper(httpServletRequest);
     Map m = request.getParameterMap();
-    System.out.println(httpServletRequest.getContentType());
+//    System.out.println(httpServletRequest.getContentType());
     logger.info("url : " + contextPath);
     logger.info("body : " + Jsons.objToJson(m));
 //    chain.doFilter(requestWrapper, response);
